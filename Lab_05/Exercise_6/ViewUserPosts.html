@@ -1,0 +1,32 @@
+<html>
+<head>
+<?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+$mysqli = new mysqli("mysql.eecs.ku.edu", "b450h626", "wu4phei3", "b450h626");
+
+if ($mysqli->connect_errno) {
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
+}
+$query = "SELECT * FROM `Users` WHERE 1;";
+$results = $mysqli->query($query);
+while($array[] = $results->fetch_object());
+array_pop($array);
+?>
+</head>
+
+<body>
+Select User:<br>
+<select name="users" form="select">
+  <?php foreach($array as $option) : ?>
+        <option value="<?php echo $option->user_id; ?>"><?php echo $option->user_id; ?></option>
+<?php endforeach; ?>
+</select>
+<form action="ViewUserPosts.php" id="select" method="post">
+  <input type="submit">
+</form>
+
+</body>
+
+</html>
